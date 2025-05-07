@@ -17,46 +17,38 @@
       font-weight: normal;
       font-style: normal;
     }
-  
-    body {
-       background-image: url('assets/bg-8.webp'); 
-       background-size: cover;
-       background-position: center; 
-       background-repeat: no-repeat; 
-       min-height: 100vh;
-    }
 
+    body {
+    background-image: url('assets/bg-8.webp'); /* 这里的路径需要修改成你的图片路径 */
+    background-size: cover; /* 让图片覆盖整个页面 */
+    background-position: center center; /* 让图片居中显示 */
+    background-repeat: no-repeat; /* 背景图片不重复 */
+    min-height: 100vh; /* 确保背景图像在页面高度不足时仍然能填满 */
+  }
     h1 {
-       color: #fdaf1f; 
-    }
+  color: #FFA500; /* 设置标题颜色为橙色 */
+  }
 
     h3 {
-       color: #fdb837; 
-    }
+  color: #FFA500; /* 设置'Select your traits:'文字颜色为橙色 */
+  }
 
-    button {
-       background-color: #fcbb43 !important; 
-       border: none; 
-       color: rgb(6, 6, 6) !important; 
-    }
+  button {
+  background-color: #FFA500 !important; /* 设置按钮背景色为橙色 */
+  border: none; /* 去掉按钮的边框 */
+  color: rgb(10, 10, 10) !important; /* 设置按钮文字颜色为白色 */
+}
 
-    button:hover {
-       background-color: #FF8C00; 
-    }
+  button:hover {
+  background-color: #FF8C00; /* 设置按钮悬停时的颜色 */
+}
+  .character-img + p {
+  color: white; /* 设置图片下方的描述文字颜色为白色 */
+}
 
-    .character-img + p {
-    color: white;
-    }
-
-    .form-check-label {
-    color: white; 
-    }
-
-    .form-check {
-    margin-bottom: 15px; 
-    }
-
-
+.form-check-label {
+  color: white; /* 设置复选框选项的文字颜色为白色 */
+}
   </style>
 </head>
 <body class="p-4">
@@ -64,6 +56,7 @@
   <div id="app" class="container">
     <h1 class="text-center" style="font-family: 'Luna';">Which Ghibli Character Are You?</h1>
     
+    <!-- Trait Selection Section -->
     <div class="row mb-4">
       <div class="col-12">
         <h3>Select your traits:</h3>
@@ -82,18 +75,21 @@
       </div>
     </div>
 
+    <!-- Reveal Button -->
     <div class="row">
       <div class="col-12 text-left">
         <button class="btn btn-primary" @click="findCharacter">Reveal My Character</button>
       </div>
     </div>
 
+    <!-- Result Section -->
     <div v-if="result" class="mt-4 text-center">
       <h3>You are most like {{ result.name }}!</h3>
       <img :src="result.image" class="character-img" alt="Character Image">
       <p>{{ result.description }}</p>
     </div>
 
+    <!-- No Result Alert -->
     <div v-else-if="noResult" class="alert alert-warning mt-4 text-center">
       Hmm... Either you didn't select any traits or we couldn't find a match. Please try again.
     </div>
@@ -104,12 +100,12 @@
       data() {
         return {
           availableTraits: [
-            'Ambitious','Brave', 'Curious',
+          'Ambitious','Brave', 'Curious',
             'Kind', 'Quiet', 'Adventurous',
             'Protective', 'Mischievous', 'Loyal', 
             'Independent', 'Dreamy','Funny',
             'Empathetic','Hardworking','Witty',
-            'Mysterious', 
+            'Mysterious',
           ],
           selectedTraits: [],
           characters: [
@@ -193,3 +189,5 @@
   </script>
 </body>
 </html>
+
+
